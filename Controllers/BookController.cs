@@ -29,15 +29,6 @@ namespace TheNew1.Controllers
             }
             return View(await books.ToListAsync());
         }
-        public async Task<IActionResult> Home(String searchString)
-        {
-            var books = from a in _context.Books select a;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                books = books.Where(y => y.Name.Contains(searchString));
-            }
-            return View(await books.ToListAsync());
-        }
         //Get:Detail
         public async Task<IActionResult> Details(int? id)
         {

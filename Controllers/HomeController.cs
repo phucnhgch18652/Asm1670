@@ -9,25 +9,33 @@ using TheNew1.Models;
 using TheNew1.Data;
 using System.Security.Cryptography;
 using System.Text;
+using Asm.Models;
+using System.Diagnostics;
 
 namespace Asm.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly FPTBookDbContext _context;
-        public HomeController(FPTBookDbContext context)
+        private readonly ILogger<HomeController> _logger;
+        public HomeController(ILogger<HomeController> logger)
         {
-            _context = context;
+            _logger = logger;
         }
 
-        public async Task<IActionResult>Index(String searchString)
+        public IActionResult Index()
         {
-            var books = from a in _context.Books select a;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                books = books.Where(y => y.Name.Contains(searchString));
-            }
-            return View(await books.ToListAsync());
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
