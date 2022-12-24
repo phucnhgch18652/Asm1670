@@ -52,32 +52,6 @@ namespace Asm.Migrations
 
                     b.ToTable("Books");
                 });
-
-            modelBuilder.Entity("TheNew1.Models.Owner", b =>
-                {
-                    b.Property<int>("IdOwner")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdOwner"));
-
-                    b.Property<string>("OwnerAccount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OwnerName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OwnerPassword")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdOwner");
-
-                    b.ToTable("Owners");
-                });
 #pragma warning restore 612, 618
         }
     }

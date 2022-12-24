@@ -26,21 +26,6 @@ namespace Asm.Migrations
                 {
                     table.PrimaryKey("PK_Books", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Owners",
-                columns: table => new
-                {
-                    IdOwner = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OwnerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OwnerAccount = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OwnerPassword = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Owners", x => x.IdOwner);
-                });
         }
 
         /// <inheritdoc />
@@ -48,9 +33,6 @@ namespace Asm.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Books");
-
-            migrationBuilder.DropTable(
-                name: "Owners");
         }
     }
 }
